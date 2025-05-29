@@ -46,10 +46,10 @@ public class UpgradeSystem : MonoBehaviour
             GameManager.ClickCount -= upgradeCostA[upgradeIndex];
             GameManager.Multipliera[upgradeIndex] += 1;
             Refresh();
-            CheckForUpgrade();
             upgradeLevelA[upgradeIndex]++;
             upgradeCostA[upgradeIndex] = (int)(upgradeCostA[upgradeIndex] * 1.1f);
-            upgradeTextA[upgradeIndex].text = upgradeNameA[upgradeIndex] + " " + upgradeLevelA[upgradeIndex] + "/" + upgradeMaxLevelA[upgradeIndex];
+            if(upgradeCostA[upgradeIndex] <= 0){upgradeCostA[upgradeIndex] = 10;}
+            CheckForUpgrade();
         }
     }
 
@@ -65,10 +65,10 @@ public class UpgradeSystem : MonoBehaviour
             GameManager.ClickCount -= upgradeCostB[upgradeIndex];
             GameManager.Multiplierb[upgradeIndex] += 1;
             Refresh();
-            CheckForUpgrade();
             upgradeLevelB[upgradeIndex]++;
             upgradeCostB[upgradeIndex] = (int)(upgradeCostB[upgradeIndex] * 1.1f);
-            upgradeTextB[upgradeIndex].text = upgradeNameB[upgradeIndex] + " " + upgradeLevelB[upgradeIndex] + "/" + upgradeMaxLevelB[upgradeIndex];
+            if(upgradeCostB[upgradeIndex] <= 0){upgradeCostB[upgradeIndex] = 10;}
+            CheckForUpgrade();
         }
     }
 
@@ -90,7 +90,10 @@ public class UpgradeSystem : MonoBehaviour
                 else{UpgradeButtonB[i].SetActive(false);}
             }
             else{UpgradeButtonB[i].SetActive(false);}
-        }
+        }  
+
+        for (int i = 0; i < upgradeTextA.Length; i++){upgradeTextA[i].text = upgradeNameA[i] + " " + upgradeLevelA[i] + "/" + upgradeMaxLevelA[i];}
+        for (int i = 0; i < upgradeTextB.Length; i++){upgradeTextB[i].text = upgradeNameB[i] + " " + upgradeLevelB[i] + "/" + upgradeMaxLevelB[i];}
     }
 
     public void Refresh(){GameManager.RefreshText();}

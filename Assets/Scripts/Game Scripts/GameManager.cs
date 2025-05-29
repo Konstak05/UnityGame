@@ -105,6 +105,14 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i < UpgradeSystem.upgradeLevelB.Length; i++) {
             if(UpgradeSystem.upgradeLevelB[i] >= 1) {UpgradeSystem.upgradeLevelB[i] = 1;}
         }
+        for (int i = 0; i < UpgradeSystem.upgradeCostA.Length; i++) {
+            if(UpgradeSystem.upgradeLevelA[i] >= 1) {UpgradeSystem.upgradeCostA[i] = 25;}
+        }
+        for (int i = 0; i < UpgradeSystem.upgradeCostB.Length; i++) {
+            if(UpgradeSystem.upgradeLevelB[i] >= 1) {UpgradeSystem.upgradeCostB[i] = 25;}
+        }
+        for(int i = 0; i < Multipliera.Length; i++) {Multipliera[i] = 0;}
+        for(int i = 0; i < Multiplierb.Length; i++) {Multiplierb[i] = 0;}
         UpgradeSystem.CheckForUpgrade();
         RefreshText();
     }
